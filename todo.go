@@ -2,6 +2,9 @@ package main
 
 import (
 	"errors"
+	"fmt"
+	"os"
+	"text/tabwriter"
 	"time"
 )
 
@@ -62,4 +65,18 @@ func (todos *Todos) edit(index int, title string) error {
 	}
 	t[index].Title = title
 	return nil
+}
+
+func (todos *Todos) print() {
+	w := tabwriter.NewWriter(os.Stdout, 0, 0, 3, ' ', 0)
+	defer w.Flush()
+
+	fmt.Fprintln(w, "ID\tTITLE\tCOMPLETED\tCREATED_AT\tCOMPLETED_AT")
+	for index, t := range *todos {
+		completedAt := "-"
+		if t.CompletedAt != nil {
+			completedAt = t.CompletedAt.Format(time.RFC1123)
+		}
+		fmt.Fprintln(w, index, "\t", t.Title, "\t", t.Completed, "\t", t.CreatedAt.Format(time.RFC1123), "\t", completedAt)
+	}
 }
