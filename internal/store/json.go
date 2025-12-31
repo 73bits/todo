@@ -3,6 +3,7 @@ package store
 import (
 	"encoding/json"
 	"os"
+	"path/filepath"
 
 	"github.com/73bits/todo/internal/model"
 )
@@ -31,4 +32,22 @@ func (s *JSONStore) Load() ([]model.Todo, error) {
 	}
 
 	return todos, nil
+}
+
+func (s *JSONStore) Save(todos []model.Todo) error {
+	if err := os.MkdirAll(filepath.Dir(s.Path), 0755); err != nil {
+		return err
+	}
+
+	data, err := json.MarshalIndent(todos, "", "  ")
+	if err != nil {
+		return err
+	}
+
+	tmp := s.Path + ".tmp"
+	if err := os.WriteFile(tmp, data, 0644); err != nil {
+		return err
+	}
+
+	return os.Rename(tmp, s.Path)
 }
