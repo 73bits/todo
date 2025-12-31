@@ -1,7 +1,7 @@
 # todo
 
 - [X] model
-- [ ] store
+- [X] store
 - [ ] service
 - [ ] cli
 - [ ] main.go
