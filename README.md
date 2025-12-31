@@ -1,6 +1,6 @@
 # todo
 
-- [ ] model
+- [X] model
 - [ ] store
 - [ ] service
 - [ ] cli
