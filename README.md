@@ -2,6 +2,6 @@
 
 - [X] model
 - [X] store
-- [ ] service
+- [X] service
 - [ ] cli
 - [ ] main.go
