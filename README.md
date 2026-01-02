@@ -3,5 +3,5 @@
 - [X] model
 - [X] store
 - [X] service
-- [ ] cli
-- [ ] main.go
+- [X] cli
+- [X] main.go
