@@ -33,6 +33,8 @@ func run() error {
 	default:
 		return fmt.Errorf("unknown command: %s\n%s", os.Args[1], help)
 	}
+
+	return nil
 }
 
 func main() {
