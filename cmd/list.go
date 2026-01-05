@@ -37,4 +37,3 @@ func ListTabWriter(svc *service.TodoService) {
 		fmt.Fprintln(w, i, "\t", t.Title, "\t", t.Completed, "\t", t.CreatedAt, "\t", t.CompletedAt)
 	}
 }
-

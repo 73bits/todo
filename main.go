@@ -17,7 +17,7 @@ func run() error {
 	}
 
 	str := &store.JSONStore{"data/todo.json"} // create store
-	svc := service.New(str) // create service
+	svc := service.New(str)                   // create service
 
 	switch os.Args[1] {
 	case "add":
